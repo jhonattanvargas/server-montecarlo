@@ -23,7 +23,9 @@ function serial(req, res){
       .status(200)
       .send({
         "pi" : obj.pi,
-        "timeTaken" : obj.time
+        "timeTaken" : obj.time,
+        "cpus" : 1,
+        "cicles" : cicles
       })
     }
   }
