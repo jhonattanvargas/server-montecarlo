@@ -62,7 +62,7 @@ void parallel (const FunctionCallbackInfo<Value>& args) {
   int rc;
   int i;
   unsigned long long totalpoints =  args[0]->NumberValue();
-  printf("cicles : %llu\n", totalpoints);
+  //printf("cicles : %llu\n", totalpoints);
   points_per_thread = totalpoints / cpus;
 
   pthread_t threads[cpus];
@@ -126,7 +126,7 @@ void serial (const FunctionCallbackInfo<Value>& args) {
   unsigned long long serial_incircle = 0;
   unsigned long long totalpoints = args[0]->NumberValue();
   unsigned long long i;
-  printf("cicles : %llu\n", totalpoints);
+  //printf("cicles : %llu\n", totalpoints);
   srand((unsigned)time(NULL));
   unsigned int rand_state = rand();
   //inicio de tiempo de ejecución
