@@ -1,10 +1,11 @@
 'use strict'
 
 //add models require
-const addon = require('../build/Release/addon')
+let addon = require('../build/Release/addon')
 
 //add functions from routes
-function serial(req, res){
+function serial(req, res, next){
+  //console.log('serial request');
   let cicles = Number(req.params.cicles)
   if(isNaN(cicles)){
     res
@@ -29,9 +30,11 @@ function serial(req, res){
       })
     }
   }
+  next()
 }
 
-function parallel(req, res){
+function parallel(req, res, next){
+  //console.log('parallel request');
   let cicles = Number(req.params.cicles)
   if(isNaN(cicles)){
     res
@@ -56,6 +59,7 @@ function parallel(req, res){
       })
     }
   }
+  next()
 }
 
 module.exports = {

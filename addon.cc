@@ -19,6 +19,8 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
+//int var = 0;
+
 unsigned long long incircle;
 unsigned long long points_per_thread;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -42,7 +44,8 @@ void *runner(void *threadid) {
 
 void parallel (const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-
+  //var ++;
+  //printf("var: %d\n",var);
   //define numero de cpus
   unsigned cpus = std::thread::hardware_concurrency();
   //revisar que los argumentos sean correctos
@@ -83,7 +86,7 @@ void parallel (const FunctionCallbackInfo<Value>& args) {
     pthread_join(threads[i],NULL);
   }
 
-  pthread_mutex_destroy(&mutex);
+  //pthread_mutex_destroy(&mutex);
 
   double pi = (4. * (double)incircle) / ((double)points_per_thread * cpus);
   //fin tiempo de medida
@@ -95,6 +98,7 @@ void parallel (const FunctionCallbackInfo<Value>& args) {
   //printf("Pi: %1.10lf\n", pi);
   //printf( "Parallel Time taken: %lf\n", accum );
 
+  free(threads); 
   incircle = 0;
   points_per_thread = 0;
 
@@ -104,7 +108,7 @@ void parallel (const FunctionCallbackInfo<Value>& args) {
   obj->Set(String::NewFromUtf8(isolate, "cpus"), Number::New(isolate, cpus));
 
   args.GetReturnValue().Set(obj);
-
+  //pthread_exit(NULL);
 }
 
 void serial (const FunctionCallbackInfo<Value>& args) {
