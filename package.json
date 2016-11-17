@@ -1,0 +1,28 @@
+{
+  "name": "server-montecarlo",
+  "version": "1.0.0",
+  "description": "server que aproxima el valor de pi de manera serial y multihilo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install" : "node-gyp configure && node-gyp rebuild"
+  },
+  "keywords": [
+    "server",
+    "pi",
+    "c++",
+    "montecarlo",
+    "serial",
+    "multithread",
+    "pthread"
+  ],
+  "author": "jhonattan vargas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
